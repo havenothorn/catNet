@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import api from "../utils/api";
 
 interface Inputs extends FieldValues {
   email: string;
@@ -12,7 +13,9 @@ export const SignUp = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const response = await axios.post("http://localhost:8000/cats", data);
+      const response = await axios.post(api.cats, data, {
+        withCredentials: true,
+      });
       console.log(response.data);
     } catch (error) {
       console.error(error);
