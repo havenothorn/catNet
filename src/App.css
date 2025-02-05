@@ -4,5 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: "Noto Sans KR", "Noto Sans", "Spoqa Han Sans", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  background-color: #e8e8e8;
 }
