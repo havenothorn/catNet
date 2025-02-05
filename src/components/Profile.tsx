@@ -3,12 +3,12 @@ import { useAuth } from "../utils/store";
 import axios from "axios";
 import api from "../utils/api";
 
-type LayoutProps = {
+type ProfileProps = {
   children: React.ReactNode;
   isSignup?: boolean;
 };
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Profile = ({ children }: ProfileProps) => {
   const { user, login, logout } = useAuth();
   const imageInput = useRef<HTMLInputElement>(null);
   const [isUpdated, setIsUpdated] = useState(true);
@@ -56,7 +56,6 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div>
       <header>
-        <h1>My App</h1>
         {user ? (
           <>
             {user.imgUrl && (

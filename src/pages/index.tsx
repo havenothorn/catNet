@@ -1,11 +1,13 @@
-import { Layout } from "../components/Layout";
+import { List } from "../components/List";
+import { Profile } from "../components/Profile";
 
 export const Home = () => {
   return (
     <div>
-      <Layout>
-        <p>Home page</p>
-      </Layout>
+      <Profile>
+        <p>프로필 영역</p>
+      </Profile>
+      <List />
     </div>
   );
 };

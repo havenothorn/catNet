@@ -32,14 +32,16 @@ export const Login = () => {
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <input
           type="email"
           placeholder="Email"
+          autoComplete="off"
           {...register("email", { required: true })}
         />
         <input
           type="password"
+          autoComplete="new-password"
           placeholder="Password"
           {...register("password", { required: true })}
         />
