@@ -28,7 +28,7 @@ export const List = () => {
 
   return (
     <div>
-      <h1>User List</h1>
+      <p>User List</p>
       {items.map((item) => (
         <div key={item._id}>
           <img src={item.imgUrl} alt={item.name} />
