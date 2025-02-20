@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useAuth } from "../utils/store";
 import axios from "axios";
 import api from "../utils/api";
@@ -7,23 +7,22 @@ import * as styles from "./styles.css";
 export const Header = () => {
   const { user, login, logout } = useAuth();
   const imageInput = useRef<HTMLInputElement>(null);
-  const [isUpdated, setIsUpdated] = useState(true);
-  const [trigger, setTrigger] = useState(false);
 
   const handleImgChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (!event.target.files || !user) return;
+
     const files = event.target.files;
     const form = new FormData();
+
     Array.from(files).forEach((file: Blob) => {
       form.append("image", file);
     });
 
-    console.log("업로드할 FormData", form.get("image")); // FormData {}
+    console.log("업로드할 FormData", Array.from(form.entries()));
 
     try {
-      setIsUpdated(false);
       const res = await axios.post(`${api.cats}/upload`, form, {
         withCredentials: true,
         headers: {
@@ -31,9 +30,9 @@ export const Header = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res);
+
+      console.log("이미지 업로드 응답", res);
       login({ ...res.data.data, token: user.token });
-      setTrigger((prev) => !prev);
     } catch (error) {
       console.error("Failed to upload image", error);
     }
@@ -45,19 +44,15 @@ export const Header = () => {
     }
   };
 
-  useEffect(() => {
-    setIsUpdated(true);
-  }, [trigger]);
-
   return (
     <header>
       <nav>
-        <div className={styles.list}>
+        <div className={styles.navList}>
           <a href="/">
             <p>Home</p>
           </a>
           {user ? (
-            <div className={styles.itemWrap}>
+            <div className={styles.navItem}>
               <div className={styles.profile}>
                 <input
                   type="file"
@@ -75,7 +70,6 @@ export const Header = () => {
                     />
                   </a>
                 )}
-                {!isUpdated && <span>Updating...</span>}
                 <p>{user.name}</p>
               </div>
               <a onClick={logout}>
@@ -83,7 +77,7 @@ export const Header = () => {
               </a>
             </div>
           ) : (
-            <div className={styles.itemWrap}>
+            <div className={styles.navItem}>
               <a href="/login">
                 <p>Login</p>
               </a>

@@ -13,8 +13,18 @@ export const List = () => {
   const [items, setItems] = useState<Item[]>([]);
 
   const getItems = async () => {
+    const user = localStorage.getItem("user");
+    const token = user ? JSON.parse(user).token : "";
+
+    console.log("token", token);
+
     try {
-      const res = await axios.get(`${api.cats}/all`);
+      const res = await axios.get(`${api.cats}/all`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       setItems(res.data.data);
       console.log(res.data.data);
     } catch (error) {

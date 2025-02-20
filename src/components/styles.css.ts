@@ -1,17 +1,17 @@
 import { style } from "@vanilla-extract/css";
 
-export const list = style({
+export const navList = style({
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
   width: "100vw",
+  padding: 20,
 });
 
-export const itemWrap = style({
+export const navItem = style({
   display: "flex",
-  justifyContent: "space-between",
   alignItems: "center",
-  width: "10vw",
+  minWidth: 100,
+  gap: 10,
 });
 
 export const profile = style({
@@ -22,6 +22,8 @@ export const profile = style({
 
 export const img = style({
   width: 50,
-  borderRadius: 25,
+  height: 50,
+  borderRadius: "50%",
   border: "3px solid #000",
+  cursor: "pointer",
 });
