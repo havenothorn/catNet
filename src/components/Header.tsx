@@ -82,7 +82,7 @@ export const Header = () => {
                 <p>Login</p>
               </a>
               <a href="/signup">
-                <p>Join Us</p>
+                <p>Sign Up</p>
               </a>
             </div>
           )}
