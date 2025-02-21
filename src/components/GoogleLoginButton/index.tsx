@@ -1,9 +1,15 @@
+import api from "../../utils/api";
 import * as styles from "./styles.css";
+import axios from "axios";
 
 export const GoogleLoginButton = () => {
-  const handleGoogleLogin = () => {
-    console.log("Google login");
-    // window.location.href = `${api.auth}/oauth/google`;
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get(`${api.cats}/auth/google`);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
