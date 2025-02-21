@@ -3,14 +3,13 @@ import { style } from "@vanilla-extract/css";
 export const navList = style({
   display: "flex",
   justifyContent: "space-between",
-  width: "100vw",
+  width: "100%",
   padding: 20,
 });
 
 export const navItem = style({
   display: "flex",
   alignItems: "center",
-  minWidth: 100,
   gap: 10,
 });
 

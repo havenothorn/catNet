@@ -3,10 +3,18 @@ import { useAuth } from "../../utils/store";
 import axios from "axios";
 import api from "../../utils/api";
 import * as styles from "./styles.css";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../Button";
 
 export const Header = () => {
   const { user, login, logout } = useAuth();
   const imageInput = useRef<HTMLInputElement>(null);
+  const router = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    router("/login");
+  };
 
   const handleImgChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -48,9 +56,9 @@ export const Header = () => {
     <header>
       <nav>
         <div className={styles.navList}>
-          <a href="/">
-            <p>Home</p>
-          </a>
+          <Button onClick={() => router("/")} variant="menu">
+            Home
+          </Button>
           {user ? (
             <div className={styles.navItem}>
               <div className={styles.profile}>
@@ -72,18 +80,16 @@ export const Header = () => {
                 )}
                 <p>{user.name}</p>
               </div>
-              <a onClick={logout}>
-                <p>Logout</p>
-              </a>
+              <Button onClick={handleLogout}>Logout</Button>
             </div>
           ) : (
             <div className={styles.navItem}>
-              <a href="/login">
-                <p>Login</p>
-              </a>
-              <a href="/signup">
-                <p>Sign Up</p>
-              </a>
+              <Button onClick={() => router("/login")} variant="menu">
+                Login
+              </Button>
+              <Button onClick={() => router("/signup")} variant="menu">
+                Sign Up
+              </Button>
             </div>
           )}
         </div>

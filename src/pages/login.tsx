@@ -8,6 +8,7 @@ import { useAuth } from "../utils/store";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { InputField } from "../components/InputField";
+import { GoogleLoginButton } from "../components/GoogleLoginButton";
 
 export const Login = () => {
   const { login } = useAuth();
@@ -53,6 +54,7 @@ export const Login = () => {
           register={register("password", { required: true })}
         />
         <Button type="submit">로그인</Button>
+        <GoogleLoginButton />
         <Button
           type="button"
           variant="underline"

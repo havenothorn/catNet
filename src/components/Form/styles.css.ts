@@ -3,6 +3,7 @@ import { style } from "@vanilla-extract/css";
 export const form = style({
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   gap: 10,
   width: 460,
 });
