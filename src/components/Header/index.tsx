@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { useAuth } from "../utils/store";
+import { useAuth } from "../../utils/store";
 import axios from "axios";
-import api from "../utils/api";
+import api from "../../utils/api";
 import * as styles from "./styles.css";
 
 export const Header = () => {

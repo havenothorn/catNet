@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import api from "../utils/api";
+import api from "../../utils/api";
 
 interface Item {
   _id: string;
